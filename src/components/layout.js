@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 //使用 'useStaticQuery'傳遞 graphQL的值
 //graphql告訴系統資料來自graphQL
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
 //import css
 import {
@@ -11,7 +11,7 @@ import {
   navLinkItem,
   navLinkText,
   siteTitle,
-} from './layout.module.css'
+} from './layout.module.css';
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -22,10 +22,12 @@ const Layout = ({ pageTitle, children }) => {
         }
       }
     }
-  `)
+  `);
   return (
     <main className={container}>
-      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      <title>
+        {pageTitle} | {data.site.siteMetadata.title}
+      </title>
       <p className={siteTitle}>{data.site.siteMetadata.title}</p>
       <nav>
         <ul className={navLinks}>
@@ -44,11 +46,16 @@ const Layout = ({ pageTitle, children }) => {
               Blog
             </Link>
           </li>
+          <li className={navLinkItem}>
+            <Link to="/home" className={navLinkText}>
+              Description
+            </Link>
+          </li>
         </ul>
       </nav>
       <h1 className={heading}>{pageTitle}</h1>
       {children}
     </main>
-  )
-}
-export default Layout
+  );
+};
+export default Layout;
